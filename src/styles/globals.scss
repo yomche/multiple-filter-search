@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Evolventa Bold";
+  src        : url("./fonts/Evolventa-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Evolventa Regular";
+  src        : url("./fonts/Evolventa-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Extatica Medium";
+  src        : url("./fonts/Extatica-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Extatica Regular";
+  src        : url("./fonts/Extatica-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Extatica SemiBold";
+  src        : url("./fonts/Extatica-SemiBold.ttf") format("truetype");
+}
+
+:root {
+  --white      : #ffffff;
+  --kiwi-green : #88e23b;
+  --texas      : #ebe480;
+  --endo       : #60a85f;
+  --calla-green: #6b7132;
+  --violet     : #6A515E;
+  --dark-grey  : #252525;
+  --lg-width   : 75%;
+}
+
+* {
+  margin         : 0;
+  padding        : 0;
+  border         : 0;
+  outline        : 0;
+  box-sizing     : border-box;
+  list-style     : none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Extatica Medium";
+  color      : var(--deep-green);
+  background : var(--dark-grey) no-repeat right bottom url("../assets/background.jpg");
+  line-height: 1.7;
+}
+
+.main {
+  width         : var(--lg-width);
+  margin        : 0 auto;
+  padding-bottom: 20px;
+  min-height    : 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--calla-green);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--kiwi-green);
+  border-radius   : 20px;
+  border          : 1px solid var(--calla-green);
+}
