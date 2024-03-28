@@ -1,20 +1,17 @@
-import styles from "./card.module.scss";
+import { FC } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import PlaceholderImage from "../../assets/placeholder.png";
+import styles from "./card.module.scss";
 
-export const Card = ({
-  url,
-  name,
-  species,
-  status,
-  gender,
-}: {
+interface CardProps {
   url: string;
   name: string;
   species: string;
   status: string;
   gender: string;
-}) => {
+}
+
+export const Card: FC<CardProps> = ({ url, name, species, status, gender }) => {
   return (
     <div className={styles.card}>
       <LazyLoadImage
@@ -32,9 +29,9 @@ export const Card = ({
           </svg>
           <h3 className={styles.title}>{name || ""}</h3>
         </div>
-        <p
-          className={styles.description}
-        >{`${species} ' ${status} ' ${gender}`}</p>
+        <p className={styles.description}>
+          {species} &bull; {status} &bull; {gender}
+        </p>
       </div>
     </div>
   );

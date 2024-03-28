@@ -1,0 +1,55 @@
+.container {
+  display         : inline-block;
+  position        : relative;
+  width           : 200px;
+  background-color: var(--texas);
+  border-radius   : 5px;
+
+  .text {
+    padding: 10px 20px;
+    cursor : pointer;
+    color  : var(--violet);
+
+    &::after {
+      content     : "";
+      position    : absolute;
+      right       : 10px;
+      top         : 20px;
+      border      : 7px solid transparent;
+      border-color: var(--violet) transparent transparent transparent;
+    }
+
+    &.active {
+      &::after {
+        content     : "";
+        position    : absolute;
+        right       : 10px;
+        top         : 15px;
+        border      : 7px solid transparent;
+        border-color: transparent transparent var(--violet) transparent;
+      }
+    }
+  }
+
+  .options {
+    position  : absolute;
+    margin-top: 5px;
+    width     : 100%;
+    border    : 1px solid var(--texas);
+    z-index   : 10;
+    background: var(--texas);
+    color     : var(--violet);
+
+    &.show {
+      min-height: 50px;
+      opacity   : 1;
+      visibility: visible;
+    }
+
+    &.hide {
+      min-height: 0;
+      opacity   : 0;
+      visibility: hidden;
+    }
+  }
+}

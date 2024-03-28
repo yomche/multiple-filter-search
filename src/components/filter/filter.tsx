@@ -1,6 +1,6 @@
 import { useApp } from "../../providers/appProvider";
 import { Pagination } from "../../ui/pagination";
-import Select2 from "../../ui/select2/select2";
+import { Select } from "../../ui/select";
 import styles from "./filter.module.scss";
 
 export const Filter = () => {
@@ -10,12 +10,12 @@ export const Filter = () => {
     <div className={styles.filter}>
       <div className={styles.title}>Filters By: </div>
       <div className={styles.filters}>
-        <Select2
+        <Select
           selectName={"species"}
           selectValues={["Human", "Alien"]}
           handleSelectFilter={handleSelectFilter}
         />
-        <Select2
+        <Select
           selectName={"status"}
           selectValues={["Alive", "Dead"]}
           handleSelectFilter={handleSelectFilter}

@@ -5,10 +5,18 @@
   gap           : 10px;
 
   .title {
-    margin: auto;
+    margin     : auto;
+    font-family: "Evolventa Bold";
+    font-size  : 24px;
+    color      : var(--kiwi-green);
   }
 
   .filters {
-    margin: auto;
+    margin         : auto;
+    display        : flex;
+    justify-content: center;
+    gap            : 20px;
+    flex-wrap      : wrap;
+
   }
 }

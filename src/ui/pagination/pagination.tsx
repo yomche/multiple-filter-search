@@ -1,4 +1,5 @@
 import { FC } from "react";
+import cn from "classnames";
 import styles from "./pagination.module.scss";
 
 interface PaginationProps {
@@ -19,11 +20,10 @@ export const Pagination: FC<PaginationProps> = ({
             onClick={() => {
               handleClick("page", pageNum);
             }}
-            style={{
-              background:
-                pageNum === handleActive("page", "1") ? "#ccc" : "#fff",
-            }}
-            className={styles.item}
+            className={cn(
+              styles.item,
+              pageNum === handleActive("page", "1") && styles.current
+            )}
           >
             {pageNum}
           </div>

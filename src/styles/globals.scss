@@ -3,20 +3,8 @@
   src        : url("./fonts/Evolventa-Bold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Evolventa Regular";
-  src        : url("./fonts/Evolventa-Regular.ttf") format("truetype");
-}
-@font-face {
   font-family: "Extatica Medium";
   src        : url("./fonts/Extatica-Medium.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Extatica Regular";
-  src        : url("./fonts/Extatica-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Extatica SemiBold";
-  src        : url("./fonts/Extatica-SemiBold.ttf") format("truetype");
 }
 
 :root {
@@ -49,6 +37,29 @@ body {
   color      : var(--deep-green);
   background : var(--dark-grey) no-repeat right bottom url("../assets/background.jpg");
   line-height: 1.7;
+}
+
+ul {
+  margin       : 0;
+  padding      : 0;
+  text-align   : center;
+  border-radius: 5px;
+}
+
+li {
+  list-style-type: none;
+  padding        : 6px 20px;
+  border-bottom  : 1px solid var(--kiwi-green);
+  cursor         : pointer;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background-color: var(--kiwi-green);
+  color           : var(--white);
 }
 
 .main {

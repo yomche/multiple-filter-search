@@ -4,12 +4,19 @@
   gap            : 15px;
 
   .item {
-    width          : 20px;
-    height         : 20px;
-    border-radius  : 50%;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    cursor         : pointer;
+    width           : 20px;
+    height          : 20px;
+    border-radius   : 50%;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    cursor          : pointer;
+    background-color: var(--texas);
+    color           : var(--violet);
+
+    &.current {
+      background-color: var(--kiwi-green);
+      color           : var(--white);
+    }
   }
 }

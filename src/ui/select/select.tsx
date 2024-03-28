@@ -1,14 +1,17 @@
+import cn from "classnames";
 import { useState, useRef } from "react";
 import { useOnClickOutside } from "../../hooks/useClickOutside";
-import "./select2.css";
+import styles from "./select.module.scss";
 
-const Select: React.FC<{
+interface SelectProps {
   selectName: string;
   selectValues: string[];
   handleSelectFilter: (name: string, name2: string) => void;
   defaultValue?: string;
   placeholder?: string;
-}> = ({
+}
+
+export const Select: React.FC<SelectProps> = ({
   defaultValue,
   placeholder,
   selectValues,
@@ -17,9 +20,10 @@ const Select: React.FC<{
 }) => {
   const [selectedOption, setSelectedOption] = useState(defaultValue || "");
   const [showDropdown, setShowDropdown] = useState(false);
-  const showDropdownHandler = () => setShowDropdown(!showDropdown);
   const selectPlaceholder = placeholder || "Choose an option";
   const selectContainerRef = useRef(null);
+
+  const showDropdownHandler = () => setShowDropdown(!showDropdown);
 
   const clickOutsideHandler = () => setShowDropdown(false);
 
@@ -32,28 +36,19 @@ const Select: React.FC<{
   };
 
   return (
-    <div className="select-container" ref={selectContainerRef}>
+    <div className={styles.container} ref={selectContainerRef}>
       <div
-        className={showDropdown ? "selected-text active" : "selected-text"}
+        className={cn(styles.text, showDropdown && styles.active)}
         onClick={showDropdownHandler}
       >
         {selectedOption.length > 0 ? selectedOption : selectPlaceholder}
       </div>
       <ul
-        className={
-          showDropdown
-            ? "select-options show-dropdown-options"
-            : "select-options hide-dropdown-options"
-        }
+        className={cn(styles.options, showDropdown ? styles.show : styles.hide)}
       >
-        <li className="select-option" onClick={() => updateSelectedOption("")}>
-          {"All"}
-        </li>
-        {selectValues.map((selectValue) => (
-          <li
-            className="select-option"
-            onClick={() => updateSelectedOption(selectValue)}
-          >
+        <li onClick={() => updateSelectedOption("")}>{"All"}</li>
+        {selectValues.map((selectValue, idx) => (
+          <li key={idx} onClick={() => updateSelectedOption(selectValue)}>
             {selectValue}
           </li>
         ))}
@@ -61,5 +56,3 @@ const Select: React.FC<{
     </div>
   );
 };
-
-export default Select;

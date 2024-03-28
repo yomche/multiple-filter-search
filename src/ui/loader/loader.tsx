@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Bars } from "react-loader-spinner";
 import styles from "./loader.module.scss";
 
@@ -6,7 +7,10 @@ interface LoaderProps {
   loaderColor?: string;
 }
 
-export const Loader = ({ isLoading, loaderColor = "#fff" }: LoaderProps) => {
+export const Loader: FC<LoaderProps> = ({
+  isLoading,
+  loaderColor = "#fff",
+}) => {
   return (
     <div
       className={styles.loader}
