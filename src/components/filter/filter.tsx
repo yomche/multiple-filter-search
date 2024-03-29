@@ -14,11 +14,13 @@ export const Filter = () => {
           selectName={"species"}
           selectValues={["Human", "Alien"]}
           handleSelectFilter={handleSelectFilter}
+          defaultValue={getDefaultParamValue("species", "")}
         />
         <Select
           selectName={"status"}
           selectValues={["Alive", "Dead"]}
           handleSelectFilter={handleSelectFilter}
+          defaultValue={getDefaultParamValue("status", "")}
         />
       </div>
       <Pagination
