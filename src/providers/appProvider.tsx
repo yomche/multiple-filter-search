@@ -5,7 +5,7 @@ import {
   useState,
   useEffect,
 } from "react";
-import { useUrlFilter } from "../hooks/useUrlQuery";
+import { useQueryParams } from "../hooks/useQueryParams";
 import { CharacterType } from "../types/app.type";
 import {
   API_URL,
@@ -25,9 +25,9 @@ interface AppContextProps {
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
-  const { apiQuery, getDefaultParamValue, handleSelectFilter } = useUrlFilter(
-    FILTER_PARAMS,
+  const { apiQuery, getDefaultParamValue, handleSelectFilter } = useQueryParams(
     API_URL,
+    FILTER_PARAMS,
     REFRESH_FILTER_PARAMS
   );
   const [results, setResults] = useState({
@@ -41,8 +41,8 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
       data: [],
     });
     try {
-      const response = await fetch(apiQuery);
-      const data = await response.json();
+      const res = await fetch(apiQuery);
+      const data = await res.json();
       setResults({
         status: "success",
         data: data?.results || [],

@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-export function useUrlFilter(
+export const useQueryParams = (
+  url: string,
   params: string[],
-  apiUrl: string,
   refreshParams?: string[]
-) {
-  const { search } = useLocation();
+) => {
   const navigate = useNavigate();
+  const { search } = useLocation();
   const [searchParams] = useSearchParams();
-  const [apiQuery, setApiQuery] = useState<string>(apiUrl);
-  const [queryString, setQueryString] = useState<string>("");
+  const [apiQuery, setApiQuery] = useState(url);
+  const [queryString, setQueryString] = useState("");
 
   useEffect(() => {
     setQueryString(search);
-    setApiQuery(`${apiUrl}${search}`);
+    setApiQuery(`${url}${search}`);
   }, []);
 
   const handleSelectFilter = (name: string, value: string) => {
@@ -23,15 +23,14 @@ export function useUrlFilter(
     if (
       refreshParams &&
       refreshParams?.length > 0 &&
-      !refreshParams.includes(name) &&
-      refreshParams.indexOf(name) === -1
+      !refreshParams.includes(name)
     ) {
       refreshParams.forEach((param) => {
         filter[param] = "";
       });
     }
     const query = buildQuery(params, filter);
-    setApiQuery(`${apiUrl}${query}`);
+    setApiQuery(`${url}${query}`);
     setQueryString(query);
     navigate(query, { replace: true });
   };
@@ -67,4 +66,4 @@ export function useUrlFilter(
     getDefaultParamValue,
     handleSelectFilter,
   };
-}
+};
